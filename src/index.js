@@ -7,9 +7,11 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import LessonTabs from './LessonTabs'
-import TopicPills from './TopicPills'
-import CourseList from './containers/CourseList'
+import TopicPills from './TopicPills2'
+import CourseList from './containers/courses/CourseList'
 import ES6 from './containers/es6/es6'
+import CourseEditor from './containers/courses/CourseEditor'
+
 
 const ModuleListItemStateless = ({title}) =>
   <li className="list-group-item">
@@ -169,7 +171,7 @@ class App extends React.Component {
           <Route path='/hello' component={HelloWorld}/>
           <Route path='/pageParam/:something' component={PageParam}/>
           <Route path='/es6' component={ES6}/>
-
+          <Route path='/course/:courseId' component={CourseEditor}/>
         </div>
       </Router>
     );

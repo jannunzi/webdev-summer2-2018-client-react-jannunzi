@@ -1,6 +1,6 @@
 import React from 'react';
 import CourseRow from './CourseRow'
-import CourseService from '../services/CourseService';
+import CourseService from '../../services/CourseService';
 
 class CourseList extends React.Component {
   constructor() {
