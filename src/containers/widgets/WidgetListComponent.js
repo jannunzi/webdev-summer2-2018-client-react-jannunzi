@@ -2,13 +2,20 @@ import React from 'react'
 import {WidgetType1} from './WidgetType1'
 import {WidgetType2} from './WidgetType2'
 import {WidgetType3} from './WidgetType3'
+import {HeadingWidget} from "./HeadingWidget"
+import {ListWidget} from "./ListWidget";
+import {YouTubeWidget} from "./YouTubeWIdget"
 
-const WidgetListComponent = ({widgets, deleteWidget, createWidget, updateWidget}) =>
+const WidgetListComponent = ({widgets, saveWidgets, deleteWidget, createWidget, updateWidget}) =>
 {
   let widgetTitle;
   let widgetType;
   return(
     <div>
+      <button onClick={saveWidgets}
+              className="btn btn-primary float-right">
+        Save
+      </button>
       <h1>Widget List ({widgets.length})</h1>
       <ul className="list-group">
         <li className="list-group-item">
@@ -27,6 +34,7 @@ const WidgetListComponent = ({widgets, deleteWidget, createWidget, updateWidget}
             <option value="WT1">Widget Type 1</option>
             <option value="WT2">Widget Type 2</option>
             <option value="WT3">Widget Type 3</option>
+            <option value="HEADING">Heading Widget</option>
           </select>
         </li>
         {widgets.map((widget, index) =>
@@ -38,6 +46,9 @@ const WidgetListComponent = ({widgets, deleteWidget, createWidget, updateWidget}
               Delete
             </button>
             <div>
+              {widget.widgetType === 'YOUTUBE' && <YouTubeWidget widget={widget} updateWidget={updateWidget}/>}
+              {widget.widgetType === 'LIST' && <ListWidget widget={widget} updateWidget={updateWidget}/>}
+              {widget.widgetType === 'HEADING' && <HeadingWidget widget={widget} updateWidget={updateWidget}/>}
               {widget.widgetType === 'WT1' && <WidgetType1 widget={widget} updateWidget={updateWidget}/>}
               {widget.widgetType === 'WT2' && <WidgetType2 widget={widget} updateWidget={updateWidget}/>}
               {widget.widgetType === 'WT3' && <WidgetType3 widget={widget} updateWidget={updateWidget}/>}
