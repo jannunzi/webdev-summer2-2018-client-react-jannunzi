@@ -23,7 +23,27 @@ const dispatcherToPropertyMapper = dispatch => (
     }),
     saveWidgets: () => dispatch({
       type: 'SAVE_WIDGETS'
-    })
+    }),
+    loadAllWidgets: () => {
+      fetch('http://localhost:8080/api/widget')
+        .then(response => response.json())
+        .then(widgets => dispatch({
+          type: 'FIND_ALL_WIDGETS',
+          widgets: widgets
+        }))
+    },
+    up: (widgetId) => {
+      dispatch({
+        type: 'UP',
+        widgetId: widgetId
+      })
+    },
+    down: (widgetId) => {
+      dispatch({
+        type: 'DOWN',
+        widgetId: widgetId
+      })
+    }
   }
 )
 

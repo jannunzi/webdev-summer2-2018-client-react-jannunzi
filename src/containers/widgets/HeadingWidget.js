@@ -18,7 +18,7 @@ export const HeadingWidget =
              placeholder="Heading Text"/>
       <label htmlFor="size">Heading Size</label>
       <select onChange={() => {
-        widget.size = size.value;
+        widget.size = parseInt(size.value);
         updateWidget(widget)
       }}
               ref={node => size = node}
